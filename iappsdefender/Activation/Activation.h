@@ -1,5 +1,3 @@
-
-
 @interface Activation : NSObject
 
 @property (nonatomic, retain) NSURL *activationURL;
