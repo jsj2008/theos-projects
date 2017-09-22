@@ -1,0 +1,48 @@
+#import "ActivationKeyAlert.h"
+#import "Activation.h"
+
+
+@implementation ActivationKeyAlert
+
+- (void) show:(UIViewController *)viewController {
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+  NSString *activationKey = [userDefaults objectForKey:@"activationKey"];
+
+  if (!activationKey) {
+    UIAlertController * alert = [UIAlertController
+                                  alertControllerWithTitle:@"iApps"
+                                  message:@"Введите ключ защиты iApps"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Подтвердить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+      UITextField *activationKeyField = alert.textFields.firstObject;
+      
+      [userDefaults setObject:activationKeyField.text forKey:@"activationKey"];
+      
+      Activation* activation = [[Activation alloc] init];
+      [activation checkActivation:activationKeyField.text];
+    }];
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Отменить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+      // [alert dismissViewControllerAnimated:YES completion:nil];
+      exit(0);
+    }];
+
+    [alert addAction:ok];
+    [alert addAction:cancel];
+
+    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+      textField.placeholder = @"Ключ";
+    }];
+
+    [viewController presentViewController:alert animated:YES completion:nil];
+  } else {
+    Activation* activation = [[Activation alloc] init];
+    [activation checkActivation:activationKey];
+  }
+}
+
+
+@end
+
+
