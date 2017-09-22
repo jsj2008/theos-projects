@@ -30,10 +30,10 @@
       int code = [httpResponse statusCode];
       if (code != 200) {
         dispatch_async(dispatch_get_main_queue(), ^{
-          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DEFENDER ACTIVE"
-                                message:@"Suck my dick!"
+          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Ошибка!"
+                                message:@"Ошибка активации, код неверный или заблокирован!"
                                 delegate:self
-                                cancelButtonTitle:@"OHH SHIT!"
+                                cancelButtonTitle:@"Закрыть приложение"
                                 otherButtonTitles:@"I Am Slavik Nychkalo", nil];
           [alert show];
           [alert release];

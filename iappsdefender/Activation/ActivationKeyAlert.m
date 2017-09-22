@@ -10,8 +10,8 @@
 
   if (!activationKey) {
     UIAlertController * alert = [UIAlertController
-                                  alertControllerWithTitle:@"iApps"
-                                  message:@"Введите ключ защиты iApps"
+                                  alertControllerWithTitle:nil
+                                  message:@"Введите код активации"
                                   preferredStyle:UIAlertControllerStyleAlert];
 
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Подтвердить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
