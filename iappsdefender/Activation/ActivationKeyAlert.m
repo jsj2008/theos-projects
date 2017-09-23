@@ -20,11 +20,10 @@
       [userDefaults setObject:activationKeyField.text forKey:@"activationKey"];
       
       Activation* activation = [[Activation alloc] init];
-      [activation checkActivation:activationKeyField.text];
+      [activation checkActivation:activationKeyField.text viewController:viewController];
     }];
     
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Отменить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-      // [alert dismissViewControllerAnimated:YES completion:nil];
       exit(0);
     }];
 
@@ -38,7 +37,7 @@
     [viewController presentViewController:alert animated:YES completion:nil];
   } else {
     Activation* activation = [[Activation alloc] init];
-    [activation checkActivation:activationKey];
+    [activation checkActivation:activationKey viewController:viewController];
   }
 }
 
