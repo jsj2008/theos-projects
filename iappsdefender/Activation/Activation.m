@@ -29,18 +29,18 @@
   NSOperationQueue *queue = [[NSOperationQueue alloc] init];
   [NSURLConnection sendAsynchronousRequest:self.activationRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
     if (error) {
-      UIAlertController * alert = [UIAlertController
-                                    alertControllerWithTitle:@"Ошибка!"
-                                    message:@"Ошибка активации, код неверный или заблокирован!"
-                                    preferredStyle:UIAlertControllerStyleAlert];
+      // UIAlertController * alert = [UIAlertController
+      //                               alertControllerWithTitle:@"Ошибка!"
+      //                               message:@"Ошибка активации, код неверный или заблокирован!"
+      //                               preferredStyle:UIAlertControllerStyleAlert];
 
-      UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Закрыть приложение" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        // NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        // [userDefaults setObject:nil forKey:@"activationKey"];
-        exit(1);
-      }];
-      [alert addAction:ok];
-      [viewController presentViewController:alert animated:YES completion:nil];
+      // UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Закрыть приложение" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+      //   // NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+      //   // [userDefaults setObject:nil forKey:@"activationKey"];
+      //   exit(1);
+      // }];
+      // [alert addAction:ok];
+      // [viewController presentViewController:alert animated:YES completion:nil];
     }
     else {
       NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
