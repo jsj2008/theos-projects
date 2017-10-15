@@ -10,11 +10,12 @@
 {
   BOOL result = %orig(arg1, arg2);
 
-  UIWindow *window=[UIApplication sharedApplication].keyWindow;
-  UIViewController *root = [window rootViewController];
-
-  ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
-  [activation show:root];
+  // dispatch_async(dispatch_get_main_queue(), ^{
+    UIWindow *window=[UIApplication sharedApplication].keyWindow;
+    UIViewController *root = [window rootViewController];
+    ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
+    [activation show:root];
+  // });
 
   return result;
 }
@@ -26,11 +27,12 @@
 {
   BOOL result = %orig(arg1, arg2);
 
-  UIWindow *window=[UIApplication sharedApplication].keyWindow;
-  UIViewController *root = [window rootViewController];
-
-  ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
-  [activation show:root];
+  // dispatch_async(dispatch_get_main_queue(), ^{
+    UIWindow *window=[UIApplication sharedApplication].keyWindow;
+    UIViewController *root = [window rootViewController];
+    ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
+    [activation show:root];
+  // });
 
   return result;
 }
@@ -42,11 +44,29 @@
 {
   BOOL result = %orig(arg1, arg2);
 
-  UIWindow *window=[UIApplication sharedApplication].keyWindow;
-  UIViewController *root = [window rootViewController];
+  // dispatch_async(dispatch_get_main_queue(), ^{
+    UIWindow *window=[UIApplication sharedApplication].keyWindow;
+    UIViewController *root = [window rootViewController];
+    ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
+    [activation show:root];
+  // });
 
-  ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
-  [activation show:root];
+  return result;
+}
+%end
+
+
+%hook DZREmptyAppDelegate
+-(BOOL)application:(id)arg1 didFinishLaunchingWithOptions:(id)arg2
+{
+  BOOL result = %orig(arg1, arg2);
+
+  // dispatch_async(dispatch_get_main_queue(), ^{
+    UIWindow *window=[UIApplication sharedApplication].keyWindow;
+    UIViewController *root = [window rootViewController];
+    ActivationKeyAlert* activation = [[ActivationKeyAlert alloc] init];
+    [activation show:root];
+  // });
 
   return result;
 }
