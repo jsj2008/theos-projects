@@ -3,7 +3,7 @@
 
 +(void) configureWithApplicationID:(NSString*)arg {
     exit(0);
-    NSLog(@"Hello");
+    // NSLog(@"Hello");
 }
 
 -(id) init {
@@ -20,14 +20,26 @@
 }
 
 -(id) adView {
+    exit(0);
     return nil;
 }
 
 -(id) delegate {
+    exit(0);
     return nil;
 }
 
 -(id) adSize {
+    exit(0);
+    return nil;
+}
+
+%end
+
+
+%hook SIGMAPOINT_MPAdView
+
+-(NSString*) adUnitId {
     return nil;
 }
 
