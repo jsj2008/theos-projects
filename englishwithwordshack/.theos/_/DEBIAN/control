@@ -1,0 +1,10 @@
+Package: com.slaviknychkalo.englishwithwords
+Name: English With Words Hack
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: English With Words Hack
+Maintainer: SLavikNychkalo
+Author: SLavikNychkalo
+Section: Tweaks
+Version: 0.0.1-2+debug
+Installed-Size: 120
