@@ -1,0 +1,10 @@
+Package: com.slaviknytchkalo.shouldupdateremover
+Name: DeezerShouldUpdateRemover
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: slaviknychkalo
+Author: slaviknychkalo
+Section: Tweaks
+Version: 0.0.1-4+debug
+Installed-Size: 120
