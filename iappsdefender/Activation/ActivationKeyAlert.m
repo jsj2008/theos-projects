@@ -17,7 +17,7 @@
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Подтвердить" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
       UITextField *activationKeyField = alert.textFields.firstObject;
       
-      [userDefaults setObject:activationKeyField.text forKey:@"activationKey"];
+      // [userDefaults setObject:activationKeyField.text forKey:@"activationKey"];
       
       Activation* activation = [[Activation alloc] init];
       [activation checkActivation:activationKeyField.text viewController:viewController];

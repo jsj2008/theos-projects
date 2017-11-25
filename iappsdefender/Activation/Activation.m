@@ -27,9 +27,9 @@
 - (void)checkActivation:(NSString*)key viewController:(UIViewController*)viewController {
   [self.activationRequest addValue:key forHTTPHeaderField:@"ACTIVATION-KEY"];
   NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+  NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
   [NSURLConnection sendAsynchronousRequest:self.activationRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
     if (error) {
-      NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
       if (![userDefaults objectForKey:@"activationKey"]) {
         exit(0);
       }
@@ -38,7 +38,6 @@
       NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
       int code = [httpResponse statusCode];
       if (code != 200) {
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:nil forKey:@"activationKey"];
         UIAlertController * alert = [UIAlertController
                                       alertControllerWithTitle:@"Ошибка!"
@@ -50,7 +49,9 @@
         }];
         [alert addAction:ok];
         [viewController presentViewController:alert animated:YES completion:nil];
+        return;
       }
+      [userDefaults setObject:key forKey:@"activationKey"];
     }
   }];
 }

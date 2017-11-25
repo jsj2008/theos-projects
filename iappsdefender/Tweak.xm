@@ -11,7 +11,6 @@
 {
   BOOL result = %orig(arg1, arg2);
 
-  exit(0);
   dispatch_async(dispatch_get_main_queue(), ^{
     UIWindow *window=[UIApplication sharedApplication].keyWindow;
     UIViewController *root = [window rootViewController];
