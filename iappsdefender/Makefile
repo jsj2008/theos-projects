@@ -1,6 +1,6 @@
 include $(THEOS)/makefiles/common.mk
 
-export THEOS_DEVICE_IP=192.168.0.103
+export THEOS_DEVICE_IP=192.168.0.102
 
 TWEAK_NAME = iappsDefender
 iappsDefender_FILES = Tweak.xm Activation/Activation.m Activation/ActivationKeyAlert.m
