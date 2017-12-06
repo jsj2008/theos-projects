@@ -39,16 +39,18 @@
       int code = [httpResponse statusCode];
       if (code != 200) {
         [userDefaults setObject:nil forKey:@"activationKey"];
-        UIAlertController * alert = [UIAlertController
-                                      alertControllerWithTitle:@"Ошибка!"
-                                      message:@"Ошибка активации, код неверный или заблокирован!"
-                                      preferredStyle:UIAlertControllerStyleAlert];
+        dispatch_async(dispatch_get_main_queue(), ^{
+          UIAlertController * alert = [UIAlertController
+                                        alertControllerWithTitle:@"Ошибка!"
+                                        message:@"Ошибка активации, код неверный или заблокирован!"
+                                        preferredStyle:UIAlertControllerStyleAlert];
 
-        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Закрыть приложение" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-          exit(1);
-        }];
-        [alert addAction:ok];
-        [viewController presentViewController:alert animated:YES completion:nil];
+          UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Закрыть приложение" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            exit(1);
+          }];
+          [alert addAction:ok];
+          [viewController presentViewController:alert animated:YES completion:nil];
+        });
         return;
       }
       [userDefaults setObject:key forKey:@"activationKey"];
